@@ -17,7 +17,7 @@ class usuarioController {
             })
         }
     }
-
+    //
     async obtenerUsuarios (req, res){
         try {
             const todosUsuarios = await usuario.find().select("-__v")
@@ -44,6 +44,23 @@ class usuarioController {
         } catch (error) {
             res.status(500).send({
                 message: 'error obteniendo usuario',
+                error: error.message
+            })
+        }
+    }
+
+    async editarUsuario (req, res){
+        try {
+            const { id } = req.params;
+            const { nombre, apellido, numero, correo, contraseña } = req.body;
+            const nuevoUser = await usuario.findByIdAndUpdate(id, { nombre, apellido, numero, correo, contraseña }, {new: true})
+            res.status(200).send({
+                message: 'usuario actulizado correctamente',
+                nuevoUser
+            })
+        } catch (error) {
+            req.status(500).send({
+                message: 'error actualizando usuario',
                 error: error.message
             })
         }

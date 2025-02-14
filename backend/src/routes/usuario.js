@@ -9,5 +9,6 @@ app.post('/crear-usuario', userControll.crearUsuario);
 app.get('/obtener-usuarios',  userControll.obtenerUsuarios)
 app.get('/obtener-usuario/:id', userControll.obtenerUsuario)
 app.put('/editar-usuario/:id', userControll.editarUsuario)
+app.delete('/eliminar-usuario/:id', userControll.eliminarUsuario)
 
 export default app;

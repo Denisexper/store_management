@@ -65,6 +65,21 @@ class usuarioController {
             })
         }
     }
+
+    async eliminarUsuario (req, res){
+        try {
+            const { id } = req.params;
+            const eliUser = await usuario.findByIdAndDelete(id);
+            res.status(200).send({
+                message: 'usuario eliminado correctamente'
+            })
+        } catch (error) {
+            res.status(500).send({
+                message: 'error eliminando usuario',
+                error: error.message
+            })
+        }
+    }
 }
 
 

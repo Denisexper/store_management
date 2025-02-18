@@ -4,8 +4,9 @@ class movimientosControll {
 
     async crearMovimiento(req, res){
         try {
-            const { cantidad, producto } = req.body;
-            const nuevoMov = await Movimientos.create({cantidad, producto});
+            const {productId} = req.params; //pasamos el id por la url
+            const { cantidad } = req.body;
+            const nuevoMov = await Movimientos.create({productId, cantidad}); //aseguramos que se guarde el moviento con el respectivo producto.
             res.status(200).send({
                 message: 'Movimiento creado correctamente',
                 nuevoMov

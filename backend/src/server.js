@@ -2,6 +2,7 @@ import express from 'express'
 import conn from './config/connect.js';
 import userRoutes from '../src/routes/usuario.js'
 import productRoutes from '../src/routes/productos.js'
+import movRoutes from '../src/routes/stockMovemetns.js'
 
 const app = express();
 
@@ -17,4 +18,4 @@ conn();
 
 
 app.use('/api', userRoutes)
-app.use('/app', productRoutes)
+app.use('/app', productRoutes, movRoutes)
